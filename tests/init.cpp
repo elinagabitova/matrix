@@ -10,9 +10,9 @@ SCENARIO("copy constructor")
 
 	Matrix copy(matrix);	
 
-	REQUIRE(copy.strings_() == 2);
+	REQUIRE(copy.strings() == 2);
 
-	REQUIRE(copy.columns_() == 2);
+	REQUIRE(copy.columns() == 2);
 
 }
 
@@ -22,9 +22,7 @@ SCENARIO("operator +")
 {
 	Matrix matrix (2, 2);
 
-	Matrix matrix1 = Matrix (2, 2);
-	
-	std::ifstream("text.txt") >> matrix1;
+	Matrix matrix1 = Matrix (2, 2);	
 
 	REQUIRE(matrix1 + matrix == matrix + matrix );
 

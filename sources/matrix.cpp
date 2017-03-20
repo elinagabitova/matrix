@@ -1,11 +1,24 @@
- #include "matrix.hpp"
+#include <string>
+#include <stdlib.h>
 
-	Matrix :: Matrix()
+using namespace std;
+
+class Matrix
+{
+private:
+
+	int columns;
+	int strings;
+	int **matrix;
+
+public:
+
+	Matrix()
 	{
 
 	};
 
-	Matrix ::Matrix(int a, int b)
+	Matrix(int a, int b)
 	{
 		columns = b;
 		strings = a;
@@ -17,7 +30,7 @@
 		}
 	};
 
-	void Matrix :: print(void) const
+	void print(void) const
 	{
 		for (int i = 0; i < strings; i++)
 		{
@@ -30,7 +43,7 @@
 		cout << endl;
 	};
 
-	void Matrix :: input(char *path)
+	void input(char *path)
 	{
 		ifstream file;
 		file.open(path);
@@ -40,24 +53,24 @@
 		{
 			for (int j = 0; j < columns; j++)
 			{
-				char *temp = new char[5]; // file <<  
+				char *temp = new char[5];  
 				file.getline(temp, 5);
 				set(i, j, atoi(temp));
 			}
 		}
 	};
 
-	void Matrix ::set(int x, int y, int z)
+	void set(int x, int y, int z)
 	{
 		matrix[x][y] = z;
 	};
 
-	int Matrix ::get(int x, int y) const
+	int get(int x, int y) const
 	{
 		return matrix[x][y];
 	};
 
-	Matrix :: Matrix operator+ (Matrix a) const
+	Matrix operator+ (Matrix a) const
 	{
 		Matrix c(strings, columns);
 
@@ -72,7 +85,7 @@
 		return c;
 	};
 
-	Matrix ::Matrix operator* (Matrix a) const
+	Matrix operator* (Matrix a) const
 	{
 		Matrix c(strings, a.columns);
 
@@ -92,7 +105,7 @@
 		return c;
 	};
 
-	Matrix Matrix :: operator= (Matrix &other) //const Matrix & other
+	Matrix& operator= (Matrix &other) //const Matrix & other
 	{
 		if (this != &other)
 		{
@@ -118,7 +131,7 @@
 		return *this;
 	};
 
-	bool Matrix :: operator== (Matrix &a) const
+	bool operator== (Matrix &a) const
 	{
 		bool k = false;
 
@@ -165,10 +178,6 @@
 		return os;
 	}
 
-	friend istream& operator>> (istream& is, Matrix& a)
-	{
-		
-	}
 
 	~Matrix()
 	{
@@ -181,4 +190,23 @@
 	};
 };
 
+int main()
+{
+	Matrix a = Matrix(2, 2);
+
+	a.input("D://test.txt");
+
+	cout << a;
+
+	Matrix c = a + a;
+
+	cout << a;
+
+	c = a * a;
+
+	cout << c;
+
+	system("pause");
+
+}
 

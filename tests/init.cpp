@@ -5,7 +5,7 @@ SCENARIO("par constructor")
 
 {
 
-	Matrix matrix(2, 2);
+	Matrix matrix = Matrix(2,2);
 
 	REQUIRE(matrix.strings_() == 2);
 
@@ -19,7 +19,7 @@ SCENARIO("copy constructor")
 
 {
 
-	Matrix matrix (2, 2);	
+	Matrix matrix = Matrix(2,2);	
 
 	Matrix copy(matrix);	
 
@@ -30,14 +30,11 @@ SCENARIO("copy constructor")
 }
 
 
-
-
-
 SCENARIO("operator +") 
 
 {
-	Matrix matrix (2, 2);
-	Matrix matrix1 (2, 2);
+	Matrix matrix = Matrix(2,2);
+	Matrix matrix1 = Matrix(2,2);
 
 	std::ifstream("text.txt") >> matrix1;
 
@@ -51,9 +48,9 @@ SCENARIO("operator *")
 
 {
 
-	Matrix matrix1 (2, 2);
+	Matrix matrix1 = Matrix(2,2);
 
-	Matrix matrix3 (2, 2);	
+	Matrix matrix3 = Matrix(2,2);
 
 	REQUIRE(matrix1 * matrix1 == matrix3);
 
@@ -63,7 +60,7 @@ SCENARIO("operator =")
 
 {
 
-	Matrix matrix1(2, 2);
+	Matrix matrix1 = Matrix(2,2);
 
 	Matrix matrix2 = matrix1;
 
@@ -74,9 +71,9 @@ SCENARIO("operator =")
 SCENARIO("operator ==")
 {
 
-	Matrix matrix1(2, 2);
+	Matrix matrix1 = Matrix(2,2);
 
-	Matrix matrix2(2, 2);
+	Matrix matrix2 = Matrix(2,2);
 
 	REQUIRE(matrix1 == matrix2);
 

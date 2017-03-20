@@ -1,7 +1,6 @@
 #include <matrix.hpp>
 #include <catch.hpp>
 
-
 SCENARIO("par constructor") 
 
 {
@@ -73,7 +72,6 @@ SCENARIO("operator =")
 }
 
 SCENARIO("operator ==")
-
 {
 
 	Matrix matrix1(2, 2);

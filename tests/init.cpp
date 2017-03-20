@@ -6,7 +6,7 @@ SCENARIO("copy constructor")
 
 {
 
-	Matrix matrix = Matrix (2,2);	
+	Matrix matrix;	
 
 	Matrix copy(matrix);	
 

@@ -62,12 +62,6 @@ public:
 	friend ostream& operator<< (ostream& os, const Matrix& a);
 
 
-
-
-	friend istream& operator>> (istream& is, Matrix& a);
-
-
-
 	~Matrix();
 
 };

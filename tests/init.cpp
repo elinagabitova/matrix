@@ -36,7 +36,7 @@ SCENARIO("operator *")
 
 	Matrix matrix1 (2,2);
 
-	Matrix matrix3 (2,
+	Matrix matrix3 (2,2);
 
 	REQUIRE(matrix1 * matrix1 == matrix3);
 

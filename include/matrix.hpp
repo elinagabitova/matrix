@@ -56,10 +56,10 @@ public:
 
 	bool operator== (Matrix &a) const;
 
-	friend istream& operator>> (istream& infile, const Matrix& result);
+	istream& operator>> (istream& infile, const Matrix& result);
 
 
-	friend ostream& operator<< (ostream& os, const Matrix& a);
+	ostream& operator<< (ostream& os, const Matrix& a);
 
 
 	~Matrix();

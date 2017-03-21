@@ -165,7 +165,7 @@ Matrix Matrix::operator * (const Matrix& m2)
 
 Matrix& Matrix::operator = (const Matrix& res)
 {
-	if (&result != this)
+	if (&res != this)
 	{
 		for (int i = 0; i < Strings; i++)
 		{
@@ -187,5 +187,5 @@ Matrix& Matrix::operator = (const Matrix& res)
 		}
 	}
 	return *this;
-
+};
 

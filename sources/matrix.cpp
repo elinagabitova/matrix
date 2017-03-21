@@ -1,20 +1,22 @@
 #include "matrix.hpp"
 
-int Matrix::Columns_() 
+int Matrix::Strings_() const
+{
+	return Strings;
+}
+int Matrix::Columns_() const
 {
 	return Columns;
 }
 
-int Matrix::Strings_() 
-{
-	return Strings;
-}
+
 
 Matrix::Matrix()
 {
 	Columns = 0;
 	Strings = 0;
 	matrix = new int*[Strings];
+	
 	for (int i = 0; i < Strings; i++)
 	{
 		matrix[i] = new int[Columns];

@@ -24,7 +24,7 @@ SCENARIO("operator +")
 
 	Matrix matrix1 = Matrix (2, 2);	
 
-	REQUIRE(matrix1 + matrix == matrix + matrix );
+	REQUIRE(matrix + matrix == matrix1);
 
 }
 

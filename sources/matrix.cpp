@@ -1,25 +1,8 @@
-#include <iostream>
-#include <string>
-#include <stdlib.h>
+#include <matrix.hpp>
 
-using namespace std;
+	Matrix :: Matrix(){};
 
-class Matrix
-{
-private:
-
-	int columns;
-	int strings;
-	int **matrix;
-
-public:
-
-	Matrix()
-	{
-
-	};
-
-	Matrix(int a, int b)
+	Matrix :: Matrix(int a, int b)
 	{
 		columns = b;
 		strings = a;
@@ -31,7 +14,7 @@ public:
 		}
 	};
 
-	void print(void) const
+	 void Matrix :: print(void) const
 	{
 		for (int i = 0; i < strings; i++)
 		{
@@ -44,7 +27,7 @@ public:
 		cout << endl;
 	};
 
-	void input(char *path)
+	void Matrix ::  input(char *path)
 	{
 		ifstream file;
 		file.open(path);
@@ -61,17 +44,17 @@ public:
 		}
 	};
 
-	void set(int x, int y, int z)
+	void Matrix :: set(int x, int y, int z)
 	{
 		matrix[x][y] = z;
 	};
 
-	int get(int x, int y) const
+	int Matrix :: get(int x, int y) const
 	{
 		return matrix[x][y];
 	};
 
-	Matrix operator+ (Matrix a) const
+	Matrix Matrix:: operator+ (Matrix a) const
 	{
 		Matrix c(strings, columns);
 
@@ -86,7 +69,7 @@ public:
 		return c;
 	};
 
-	Matrix operator* (Matrix a) const
+	Matrix Matrix :: operator* (Matrix a) const
 	{
 		Matrix c(strings, a.columns);
 
@@ -106,7 +89,7 @@ public:
 		return c;
 	};
 
-	Matrix& operator= (Matrix &other) 
+	Matrix& Matrix :: operator= (Matrix &other) 
 	{
 		if (this != &other)
 		{
@@ -132,7 +115,7 @@ public:
 		return *this;
 	};
 
-	bool operator== (Matrix &a) const
+	bool Matrix :: operator== (Matrix &a) const
 	{
 		bool k = false;
 
@@ -151,7 +134,7 @@ public:
 		return k;
 	}
 
-	friend istream& operator>> (istream& infile, const Matrix& result)
+	istream& operator>> (istream& infile, const Matrix& result)
 
 	{
 
@@ -165,7 +148,7 @@ public:
 
 	}
 
-	friend ostream& operator<< (ostream& os, const Matrix& a)
+	 ostream& operator<< (ostream& os, const Matrix& a)
 	{
 		for (int i = 0; i < a.strings; i++)
 		{
@@ -180,7 +163,7 @@ public:
 	}
 
 
-	~Matrix()
+	Matrix :: ~Matrix()
 	{
 		/*for (int i = 0; i < strings; i++)
 		{

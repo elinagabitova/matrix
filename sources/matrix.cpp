@@ -14,19 +14,6 @@
 		}
 	};
 
-	 void Matrix :: print(void) 
-	{
-		for (int i = 0; i < strings; i++)
-		{
-			for (int j = 0; j < columns; j++)
-			{
-				cout << get(i, j) << " ";
-			}
-			cout << endl;
-		}
-		cout << endl;
-	};
-
 	void Matrix :: input(string filen)
 	{
 		ifstream file;

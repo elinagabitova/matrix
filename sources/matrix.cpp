@@ -42,6 +42,7 @@
 				file >> matrix[i][j];
 			}
 		}
+		file.close();
 	};
 
 	void Matrix :: set(int x, int y, int z)

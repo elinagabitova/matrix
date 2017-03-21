@@ -1,67 +1,39 @@
 #include <iostream>
-
 #include <fstream>
-
 #include <string>
-
-#include <stdlib.h>
-
-
 
 using namespace std;
 
-
-
 class Matrix
-
 {
-
 private:
-
-
-
-	int columns;
-
-	int strings;
-
+	int Columns;
+	int Strings;
 	int **matrix;
-
-
 public:
-
-
-
 	Matrix();
 
+	Matrix(int _Columns, int _Strings);
 
-	Matrix(int a, int b);
-
-
-	void print(void) const;
-
-
-	void input(char *path);
-
-	void set(int x, int y, int z);
-
-	int get(int x, int y) const;
-
-	Matrix operator+ (Matrix a) const;
-
-	Matrix operator* (Matrix a) const;
-
-
-	Matrix& operator= (Matrix &other);
-
-
-	bool operator== (Matrix &a) const;
-
-	friend istream& operator>> (istream& infile, const Matrix& result);
-
-
-	friend ostream& operator<< (ostream& os, const Matrix& a);
-
+	Matrix(const Matrix& result);
 
 	~Matrix();
 
+	int Columns_();
+
+	int Strings_();
+
+	void search(string filename);
+
+	bool operator == (const Matrix& m2) const;
+
+	Matrix operator + (const Matrix& m2) const;
+
+	Matrix operator * (const Matrix& m2) const;
+
+	Matrix& operator = (const Matrix& result);
+
+	friend ostream& operator << (ostream& outfile, const Matrix& result);
+
+	friend istream& operator >> (istream& infile, const Matrix& result);
 };

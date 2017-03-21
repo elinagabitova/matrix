@@ -27,19 +27,22 @@
 		cout << endl;
 	};
 
-	void Matrix ::  input(char *path)
+	void Matrix ::  input(string filen)
 	{
 		ifstream file;
-		file.open(path);
+		file.open(filen);
+		if (file_is_open())
+			cout <<"error!"<endl;
+		else
+		{
 
-
+		matrix[i] = new *int [strings];
 		for (int i = 0; i < strings; i++)
 		{
+			matrix[i] = new *int [columns];
 			for (int j = 0; j < columns; j++)
 			{
-				char *temp = new char[5];  
-				file.getline(temp, 5);
-				set(i, j, atoi(temp));
+				file >> matrix[i][j];
 			}
 		}
 	};
@@ -154,7 +157,7 @@
 		{
 			for (int j = 0; j < a.columns; j++)
 			{
-				os << a.get(i, j) << " ";
+				os << a.matrix[i, j] << " ";
 			}
 			os << endl;
 		}

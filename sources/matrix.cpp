@@ -106,7 +106,7 @@ public:
 		return c;
 	};
 
-	Matrix& operator= (Matrix &other) //const Matrix & other
+	Matrix& operator= (Matrix &other) 
 	{
 		if (this != &other)
 		{

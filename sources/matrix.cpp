@@ -149,7 +149,7 @@ Matrix Matrix::operator * (const Matrix& a) const
 		
 		for (int i = 0; i < Strings; i++)
 		{
-			for (int j = 0; j < m2.Columns; j++)
+			for (int j = 0; j < a.Columns; j++)
 			{
 				for (int k = 0; k < Columns; k++)
 				{

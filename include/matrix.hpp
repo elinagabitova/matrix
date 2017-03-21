@@ -25,13 +25,13 @@ public:
 
 	void search(string filename);
 
-	bool operator == (const Matrix& m2) const;
+	bool operator == (const Matrix& a) const;
 
-	Matrix operator + (const Matrix& m2) const;
+	Matrix operator + (const Matrix& a) const;
 
-	Matrix operator * (const Matrix& m2) const;
+	Matrix operator * (const Matrix& a) const;
 
-	Matrix& operator = (const Matrix& result);
+	Matrix& operator = (const Matrix& res);
 
 	friend ostream& operator << (ostream& outfile, const Matrix& result);
 

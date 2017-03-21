@@ -48,7 +48,7 @@ SCENARIO("operator *")
 SCENARIO("operator =") 
 {
 	Matrix matrix(2, 2);
-	Matrix matrix = matrix1;
+	Matrix matrix1 = matrix;
 	REQUIRE(matrix == matrix1);
 }
 SCENARIO("operator ==")

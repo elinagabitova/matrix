@@ -31,10 +31,7 @@
 	{
 		ifstream file;
 		file.open(filen);
-		if (file_is_open())
-			cout <<"error!"<endl;
-		else
-		{
+		
 
 		matrix[i] = new *int [strings];
 		for (int i = 0; i < strings; i++)

@@ -191,23 +191,4 @@ public:
 	};
 };
 
-int main()
-{
-	Matrix a = Matrix(2, 2);
-
-	a.input("D://test.txt");
-
-	cout << a;
-
-	Matrix c = a + a;
-
-	cout << a;
-
-	c = a * a;
-
-	cout << c;
-
-	system("pause");
-
-}
 

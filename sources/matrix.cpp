@@ -187,5 +187,5 @@ Matrix& Matrix::operator = (const Matrix& res)
 		}
 	}
 	return *this;
-};
+}
 

@@ -14,7 +14,7 @@
 		}
 	};
 
-	 void  print(void) const
+	 void Matrix :: print(void) const
 	{
 		for (int i = 0; i < strings; i++)
 		{
@@ -27,7 +27,7 @@
 		cout << endl;
 	};
 
-	void input(string filen)
+	void Matrix :: input(string filen)
 	{
 		ifstream file;
 		file.open(filen);
@@ -44,12 +44,12 @@
 		}
 	};
 
-	void set(int x, int y, int z)
+	void Matrix :: set(int x, int y, int z)
 	{
 		matrix[x][y] = z;
 	};
 
-	int get(int x, int y) const
+	int Matrix :: get(int x, int y) const
 	{
 		return matrix[x][y];
 	};

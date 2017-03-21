@@ -14,7 +14,7 @@
 		}
 	};
 
-	 void Matrix :: print(void) const
+	 void Matrix :: print(void) 
 	{
 		for (int i = 0; i < strings; i++)
 		{
@@ -142,9 +142,9 @@
 
 			for (int j = 0; j < result.columns; j++)
 
-				infile >> result.matrix[i][j];
+				file >> result.matrix[i][j];
 
-		return infile;
+		return file;
 
 	}
 

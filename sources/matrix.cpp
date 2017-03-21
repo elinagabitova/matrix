@@ -1,165 +1,189 @@
-#include <matrix.hpp>
+#include "matrix.hpp"
 
-	Matrix :: Matrix(){};
+int Matrix::Columns_() const
+{
+	return Columns;
+}
 
-	Matrix :: Matrix(int a, int b)
+int Matrix::Strings_() const
+{
+	return Strings;
+}
+
+Matrix::Matrix()
+{
+	Columns = 0;
+	Strings = 0;
+	matrix = new int*[Strings];
+	for (int i = 0; i < Strings; i++)
 	{
-		columns = b;
-		strings = a;
-		matrix = new int*[a];
+		matrix[i] = new int[Columns];
+	}
+}
 
-		for (int i = 0; i < a; i++)
+Matrix::Matrix(int _Columns, int _Strings)
+{
+	Columns = _Columns;
+	Strings = _Strings;
+	matrix = new int*[Strings];
+	for (int i = 0; i < Strings; ++i)
+	{
+		matrix[i] = new int[Columns];
+		for (int j = 0; j < Columns; ++j)
 		{
-			matrix[i] = new int[b]{0};
+			matrix[i][j] = 0;
 		}
-	};
+	}
+}
 
-	void Matrix :: input(string filen)
+Matrix::Matrix(const Matrix& res)
+{
+	Columns = res.Columns;
+	Strings = res.Strings;
+	matrix = new int*[Strings];
+	
+	for (int i = 0; i < Strings; ++i)
 	{
-		ifstream file;
-		file.open(filen);
-		
-
-		matrix[i] = new *int [strings];
-		for (int i = 0; i < strings; i++)
+		matrix[i] = new int[Columns];
+		for (int j = 0; j < Columns; ++j)
 		{
-			matrix[i] = new *int [columns];
-			for (int j = 0; j < columns; j++)
+			matrix[i][j] = res.matrix[i][j];
+		}
+	}
+}
+
+Matrix::~Matrix()
+{
+	for (int i = 0; i < Strings; ++i)
+	{
+		delete[]matrix[i];
+	}
+	delete[]matrix;
+}
+
+istream& operator >> (istream& infile, const Matrix& res) const
+{
+	for (int i = 0; i < res.Strings; i++)
+	for (int j = 0; j < res.Columns; j++)
+		infile >> res.matrix[i][j];
+	return infile;
+}
+
+void Matrix::search(string filen) const
+{
+	ifstream file;
+	file.open(filen);
+	if (!file.is_open())
+		cout << "Error! Try again!" << endl;
+	else
+	{
+		matrix = new int*[Strings];
+		for (int i = 0; i < Strings; i++)
+		{
+			matrix[i] = new int[Columns];
+			for (int j = 0; j < Columns; j++)
 			{
 				file >> matrix[i][j];
 			}
 		}
-		file.close();
-	};
+	}
+	file.close();
+}
 
-	void Matrix :: set(int x, int y, int z)
+ostream& operator << (ostream& outfile, const Matrix& resu)
+{
+	for (int i = 0; i < res.Strings; i++)
 	{
-		matrix[x][y] = z;
-	};
-
-	int Matrix :: get(int x, int y) const
-	{
-		return matrix[x][y];
-	};
-
-	Matrix Matrix:: operator+ (Matrix a) const
-	{
-		Matrix c(strings, columns);
-
-
-		for (int i = 0; i < strings; i++)
+		for (int j = 0; j < resu.Columns; j++)
 		{
-			for (int j = 0; j < columns; j++)
+			outfile << res.matrix[i][j] << " ";
+		}
+	}
+	outfile << endl;
+	return outfile;
+}
+
+bool Matrix::operator == (const Matrix& m2) const
+{
+	bool k = false;
+	for (int i = 0; i < Strings; i++)
+	{
+		for (int j = 0; j < Columns; j++)
+		{
+			if (matrix[i][j] == m2.matrix[i][j])
+				k = true;
+		}
+	}
+	return k;
+}
+
+Matrix Matrix::operator + (const Matrix& m2) const
+{
+	if ((Columns != m2.Columns) || (Strings != m2.Strings)) 
+	{
+		cout << "Error!";
+	}
+	else 
+	{
+		Matrix result(Columns, Strings);
+		for (int i = 0; i < Strings; ++i)
+		{
+			for (int j = 0; j < Columns; ++j)
 			{
-				c.set(i, j, a.get(i, j) + get(i, j));
+				result.matrix[i][j] = matrix[i][j] + m2.matrix[i][j];
 			}
 		}
-		return c;
-	};
+		return result;
+	}
+}
 
-	Matrix Matrix :: operator* (Matrix a) const
+Matrix Matrix::operator * (const Matrix& m2) const
+{
+	if (m2.Strings != Columns)
 	{
-		Matrix c(strings, a.columns);
-
-		for (int i = 0; i < strings; i++)
+		cout << "Error!";
+	}
+	else 
+	{
+		Matrix res(Strings, m2.Columns);
+		
+		for (int i = 0; i < Strings; i++)
 		{
-			for (int j = 0; j < a.columns; j++)
+			for (int j = 0; j < m2.Columns; j++)
 			{
-				int temp = 0;
-				for (int k = 0; k < strings; k++)
+				for (int k = 0; k < Columns; k++)
 				{
-					temp += get(i, k) * a.get(k, j);
+					res.matrix[i][j] += matrix[i][k] * m2.matrix[k][j];
 				}
-				c.set(i, j, temp);
 			}
 		}
-
-		return c;
-	};
-
-	Matrix& Matrix :: operator= (Matrix &other) 
-	{
-		if (this != &other)
-		{
-			for (int i = 0; i < strings; i++)
-			{
-				delete[] matrix[i];
-			}
-
-			delete[] matrix;
-
-			columns = other.columns;
-			strings = other.strings;
-
-			matrix = new int*[strings];
-
-			for (int i = 0; i < strings; i++)
-			{
-				matrix[i] = new int[columns]{0};
-			}
-
-			matrix = other.matrix;
-		}
-		return *this;
-	};
-
-	bool Matrix :: operator== (Matrix &a) const
-	{
-		bool k = false;
-
-		for (int i = 0; i < strings; i++){
-
-			for (int j = 0; j < columns; j++){
-
-				if (matrix[i][j] == a.matrix[i][j])
-
-					k = true;
-
-			}
-
-		}
-
-		return k;
+		return result;
 	}
+}
 
-	istream& operator>> (istream& file, const Matrix& result)
-
+Matrix& Matrix::operator = (const Matrix& res)
+{
+	if (&result != this)
 	{
-
-		for (int i = 0; i < result.strings; i++)
-
-			for (int j = 0; j < result.columns; j++)
-
-				file >> result.matrix[i][j];
-
-		return file;
-
-	}
-
-	 ostream& operator<< (ostream& os, const Matrix& a)
-	{
-		for (int i = 0; i < a.strings; i++)
-		{
-			for (int j = 0; j < a.columns; j++)
-			{
-				os << a.matrix[i][j] << " ";
-			}
-			os << endl;
-		}
-		os << endl;
-		return os;
-	}
-
-
-	Matrix :: ~Matrix()
-	{
-		/*for (int i = 0; i < strings; i++)
+		for (int i = 0; i < Strings; i++)
 		{
 			delete[] matrix[i];
 		}
-
-		delete[] matrix;*/
-	};
-
+		delete[] matrix;
+	}
+	Strings = res.Strings;
+	Columns = res.Columns;
+	
+	matrix = new int*[Strings];
+	
+	for (int i = 0; i < Strings; i++)
+	{
+		matrix[i] = new int[Columns];
+		for (int j = 0; j < Columns; j++)
+		{
+			matrix[i][j] = res.matrix[i][j];
+		}
+	}
+	return *this;
 
 

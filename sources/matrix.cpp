@@ -135,7 +135,7 @@
 		return k;
 	}
 
-	istream& operator>> (istream& infile, const Matrix& result)
+	istream& operator>> (istream& file, const Matrix& result)
 
 	{
 

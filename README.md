@@ -1,6 +1,6 @@
 # matrix
 
-[![Build Status](https://travis-ci.org/elinagabitova/matrix)
+[![Build Status](https://travis-ci.org/elinagabitova/matrix)]
 
 matrix methods:
 - [x] rows

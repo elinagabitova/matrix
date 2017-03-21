@@ -142,7 +142,7 @@
 		{
 			for (int j = 0; j < a.columns; j++)
 			{
-				os << a.matrix[i, j] << " ";
+				os << a.matrix[i][j] << " ";
 			}
 			os << endl;
 		}

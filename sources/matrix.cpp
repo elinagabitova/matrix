@@ -1,11 +1,11 @@
 #include "matrix.hpp"
 
-int Matrix::Columns_() const
+int Matrix::Columns_() 
 {
 	return Columns;
 }
 
-int Matrix::Strings_() const
+int Matrix::Strings_() 
 {
 	return Strings;
 }
@@ -61,7 +61,7 @@ Matrix::~Matrix()
 	delete[]matrix;
 }
 
-istream& operator >> (istream& infile, const Matrix& res) const
+istream& operator >> (istream& infile, const Matrix& res) 
 {
 	for (int i = 0; i < res.Strings; i++)
 	for (int j = 0; j < res.Columns; j++)
@@ -69,7 +69,7 @@ istream& operator >> (istream& infile, const Matrix& res) const
 	return infile;
 }
 
-void Matrix::search(string filen) const
+void Matrix::search(string filen)
 {
 	ifstream file;
 	file.open(filen);
@@ -90,11 +90,11 @@ void Matrix::search(string filen) const
 	file.close();
 }
 
-ostream& operator << (ostream& outfile, const Matrix& resu)
+ostream& operator << (ostream& outfile, const Matrix& res)
 {
 	for (int i = 0; i < res.Strings; i++)
 	{
-		for (int j = 0; j < resu.Columns; j++)
+		for (int j = 0; j < res.Columns; j++)
 		{
 			outfile << res.matrix[i][j] << " ";
 		}
@@ -103,7 +103,7 @@ ostream& operator << (ostream& outfile, const Matrix& resu)
 	return outfile;
 }
 
-bool Matrix::operator == (const Matrix& m2) const
+bool Matrix::operator == (const Matrix& m2) 
 {
 	bool k = false;
 	for (int i = 0; i < Strings; i++)
@@ -117,7 +117,7 @@ bool Matrix::operator == (const Matrix& m2) const
 	return k;
 }
 
-Matrix Matrix::operator + (const Matrix& m2) const
+Matrix Matrix::operator + (const Matrix& m2)
 {
 	if ((Columns != m2.Columns) || (Strings != m2.Strings)) 
 	{
@@ -137,7 +137,7 @@ Matrix Matrix::operator + (const Matrix& m2) const
 	}
 }
 
-Matrix Matrix::operator * (const Matrix& m2) const
+Matrix Matrix::operator * (const Matrix& m2) 
 {
 	if (m2.Strings != Columns)
 	{

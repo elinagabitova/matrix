@@ -105,7 +105,7 @@ ostream& operator << (ostream& outfile, const Matrix& res)
 	return outfile;
 }
 
-bool Matrix::operator == (const Matrix& m2) 
+bool Matrix::operator == (const Matrix& m2) const
 {
 	bool k = false;
 	for (int i = 0; i < Strings; i++)

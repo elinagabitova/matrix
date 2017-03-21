@@ -19,9 +19,9 @@ public:
 
 	~Matrix();
 
-	int Columns_();
+	int Columns_() const;
 
-	int Strings_();
+	int Strings_() const;
 
 	void search(string filename);
 

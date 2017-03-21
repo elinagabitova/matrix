@@ -127,15 +127,15 @@ Matrix Matrix::operator + (const Matrix& m2)
 	}
 	else 
 	{
-		Matrix result(Columns, Strings);
+		Matrix res(Columns, Strings);
 		for (int i = 0; i < Strings; ++i)
 		{
 			for (int j = 0; j < Columns; ++j)
 			{
-				result.matrix[i][j] = matrix[i][j] + m2.matrix[i][j];
+				res.matrix[i][j] = matrix[i][j] + m2.matrix[i][j];
 			}
 		}
-		return result;
+		return res;
 	}
 }
 
@@ -159,7 +159,7 @@ Matrix Matrix::operator * (const Matrix& m2)
 				}
 			}
 		}
-		return result;
+		return res;
 	}
 }
 

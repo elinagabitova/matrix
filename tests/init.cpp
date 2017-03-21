@@ -67,7 +67,7 @@ SCENARIO("operator ==")
 
 	Matrix matrix (2,2);
 
-	Matrix matrix2 = Matrix (2,2);
+	Matrix matrix2 (2,2);
 
 	REQUIRE(matrix == matrix2);
 
